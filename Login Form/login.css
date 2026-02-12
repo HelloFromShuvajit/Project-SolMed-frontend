@@ -36,9 +36,9 @@ main div{
     display: flex;
     max-height: 700px;
     max-width: fit-content;
-    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
     text-align: center;
     border-radius: 15px;
+    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
 }
 main div .one{
     flex-direction: column;
@@ -53,6 +53,7 @@ main div .one{
     max-width :100px;
 }
 main div .one div{
+    box-shadow: none;
     text-align: left;
 }
 main div .one p{
@@ -84,6 +85,7 @@ main div .two form{
     font-weight: bold;
 }
 main div .two form div{
+    box-shadow: none;
     margin-bottom: 5px;
     box-shadow: none;
 }
@@ -105,16 +107,27 @@ button{
     border: none;
     margin-top: 20px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-
 }
 button:hover{
     background-color: #9fbbe7;
     color: #1f58b4;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 a:hover{
     text-decoration:none;
     color:  olive;
+}
+.google, .signup{
+    border-radius: 5px;
+    background-color: beige;
+    text-align: center;
+    padding: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: auto;
+    margin-top: 1rem;
+
+
 }
 footer{
     margin-top: 2rem;
