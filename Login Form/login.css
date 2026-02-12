@@ -5,8 +5,8 @@ header{
     font-family:Open sans;
     font-weight: bold;
     padding-left: 50px;
-    padding-bottom: 2rem;
-    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1rem;
     color: #5d7eb3;
     font-family:Open sans;
 }
@@ -36,7 +36,7 @@ main div{
     display: flex;
     max-height: 700px;
     max-width: fit-content;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
     text-align: center;
     border-radius: 15px;
 }
@@ -50,10 +50,17 @@ main div .one{
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     text-align: left;
-    max-width :150px;
+    max-width :100px;
+}
+main div .one div{
+    text-align: left;
 }
 main div .one p{
     font-size: small;
+}
+.motto{
+    margin-top: auto;
+    font-style: italic;
 }
 main div .two{
     flex-direction: column;
@@ -81,8 +88,9 @@ main div .two form div{
     box-shadow: none;
 }
 input{
+    background-color: #dfe9f8;
     border-radius: 5px;
-    padding: 15px;
+    padding: 10px;
     padding-left: 1rem;
     padding-right: 1rem;
     border: 2px solid #9fbbe7;
@@ -115,4 +123,5 @@ footer{
     font-size: small;
     font-family:Open sans;
     background-color: aqua;
+    color: #1f58b4;
 }
