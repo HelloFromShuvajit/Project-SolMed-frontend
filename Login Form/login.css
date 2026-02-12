@@ -1,0 +1,118 @@
+header{
+    background-color: aqua;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    font-family:Open sans;
+    font-weight: bold;
+    padding-left: 50px;
+    padding-bottom: 2rem;
+    padding-top: 0.5rem;
+    color: #5d7eb3;
+    font-family:Open sans;
+}
+body{
+    font-family:Open sans;
+    padding:0px;
+    margin: 0;
+    background-color:aliceblue;
+}
+header h2{
+    margin: 0px;
+}
+h3{
+    color: blueviolet;
+}
+main{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    text-align: center;
+    border: #4d6997;
+    min-height: 50vh;
+}
+main div{
+    display: flex;
+    max-height: 700px;
+    max-width: fit-content;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 15px;
+}
+main div .one{
+    flex-direction: column;
+    padding:20px;
+    background-color: aqua;
+    font-weight: normal;
+    color: #4d6997 ;
+    border-radius: 0px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    text-align: left;
+    max-width :150px;
+}
+main div .one p{
+    font-size: small;
+}
+main div .two{
+    flex-direction: column;
+    background-color:white;
+    border-radius: 0px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    color: #5d7eb3;    
+    font-weight:normal;
+    padding:20px;
+    text-align: left;
+}
+main div .two h3{
+    color: black;
+}
+main div .two p{
+    font-size: small;
+}
+main div .two form{
+    display: block;
+    font-weight: bold;
+}
+main div .two form div{
+    margin-bottom: 5px;
+    box-shadow: none;
+}
+input{
+    border-radius: 5px;
+    padding: 15px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: 2px solid #9fbbe7;
+}
+button{
+    background-color: #1f58b4;
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: none;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+}
+button:hover{
+    background-color: #9fbbe7;
+    color: #1f58b4;
+    border-radius: 8px;
+}
+a:hover{
+    text-decoration:none;
+    color:  olive;
+}
+footer{
+    margin-top: 2rem;
+    padding: .5rem;
+    text-align: center;
+    font-size: small;
+    font-family:Open sans;
+    background-color: aqua;
+}
