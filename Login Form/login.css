@@ -50,7 +50,7 @@ main div .one{
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     text-align: left;
-    max-width :100px;
+    max-width :150px;
 }
 main div .one div{
     box-shadow: none;
@@ -85,6 +85,7 @@ main div .two form{
     font-weight: bold;
 }
 main div .two form div{
+    text-align: left;
     box-shadow: none;
     margin-bottom: 5px;
     box-shadow: none;
@@ -97,38 +98,64 @@ input{
     padding-right: 1rem;
     border: 2px solid #9fbbe7;
 }
+input:hover{
+    background-color:aliceblue;
+}
 button{
-    background-color: #1f58b4;
+    background-color: blueviolet;
     color: white;
-    border-radius: 5px;
-    padding: 15px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    border-radius: 8px;
+    padding: 10px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin: auto;
     border: none;
-    margin-top: 20px;
+    margin-top: 5px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 button:hover{
-    background-color: #9fbbe7;
-    color: #1f58b4;
-    border-radius: 12px;
+    background-color: white;
+    color: blueviolet;
+    border-radius: 10px;
+}
+.or div{
+    box-shadow: none;
+
 }
 a:hover{
     text-decoration:none;
     color:  olive;
 }
-.google, .signup{
+.google{
     border-radius: 5px;
-    background-color: beige;
+    background-color: white;
     text-align: center;
     padding: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
     margin: auto;
-    margin-top: 1rem;
-
-
+    margin-top: .5rem;
 }
+.signup, .or{
+    padding: 0px;
+    box-shadow: none;
+    margin: auto;
+}
+.googlebutton{
+    background-color: white;
+    color: blueviolet;
+    border-radius: 5px;
+    border: 1px solid blueviolet;
+    margin: auto;
+    padding: 5px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    box-shadow: none;
+}
+.googlebutton:hover{
+    background-color: blueviolet;
+    color: white;
+    border-radius: 5px;
+}
+
 footer{
     margin-top: 2rem;
     padding: .5rem;
