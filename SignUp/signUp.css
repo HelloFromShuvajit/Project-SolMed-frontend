@@ -1,4 +1,6 @@
 header{
+    display: flex ;
+    flex-direction: row;
     background-color: white;
     margin-bottom: 20px;
     margin-top: 0px;
@@ -10,17 +12,16 @@ header{
     color: #5d7eb3;
     font-family:Open sans;
 }
-body{
-    font-family:Open sans;
-    padding:0px;
-    margin: 0;
-    background-color:aliceblue;
-}
 header h2{
     margin: 0px;
 }
-h3{
-    color: blueviolet;
+h2 span{
+    color: #1f58b4;
+}
+.help{
+    margin-left: auto;
+    padding-right: 2rem;
+    font-size: small;
 }
 main{
     display: flex;
@@ -45,24 +46,36 @@ main div .one{
     padding:20px;
     background-color: aqua;
     font-weight: normal;
-    color: #4d6997 ;
+    color: black ;
     border-radius: 0px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     text-align: left;
-    max-width :150px;
+    max-width : 200px;
 }
 main div .one div{
     box-shadow: none;
     text-align: left;
+    flex-direction: column;
 }
 main div .one p{
     font-size: small;
+    color: #1f58b4;
 }
-.motto{
-    margin-top: auto;
-    font-style: italic;
+.advantages{
+    margin: 0px;
+    padding-left: 1rem;
+    margin-top: 0px;
 }
+.advantages p{
+    margin: 0px;
+}
+.adTitle{
+    font-weight: bold;
+    margin: 0px;
+    padding-top: .5rem;
+}
+
 .two{
     flex-direction: column;
     background-color:white;
@@ -91,6 +104,10 @@ main div .one p{
     box-shadow: none;
     margin-bottom: 5px;
     box-shadow: none;
+    flex-direction: column;
+}
+.two form div div{
+    font-weight: lighter;
 }
 input{
     background-color: #dfe9f8;
@@ -108,8 +125,8 @@ button{
     color: white;
     border-radius: 8px;
     padding: 10px;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-left: 7rem;
+    padding-right: 7rem;
     margin: auto;
     border: none;
     margin-top: 5px;
@@ -120,19 +137,7 @@ button:hover{
     color: blueviolet;
     border-radius: 10px;
 }
-a:hover{
-    text-decoration:none;
-    color:  olive;
-}
-.google{
-    border-radius: 5px;
-    background-color: white;
-    text-align: center;
-    padding: auto;
-    margin: auto;
-    margin-top: .5rem;
-}
-.signup, .or{
+.login, .or{
     padding: 0px;
     box-shadow: none;
     margin: auto;
@@ -140,23 +145,34 @@ a:hover{
 .or div{
     box-shadow: none;
 }
-.googlebutton{
-    background-color: white;
-    color: blueviolet;
-    border-radius: 5px;
-    border: 1px solid blueviolet;
-    margin: auto;
-    padding: 5px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    box-shadow: none;
+body{
+    font-family:Open sans;
+    padding:0px;
+    margin: 0;
+    background-color:aliceblue;
 }
-.googlebutton:hover{
-    background-color: blueviolet;
-    color: white;
-    border-radius: 5px;
+main{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    text-align: center;
+    border: #4d6997;
+    min-height: 50vh;
 }
-
+main div{
+    display: flex;
+    max-height: 1000px;
+    max-width: fit-content;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
+}
+a:hover{
+    text-decoration:none;
+    color:  olive;
+}
 footer{
     margin-top: 2rem;
     padding: .5rem;
