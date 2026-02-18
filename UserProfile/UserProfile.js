@@ -20,9 +20,6 @@ window.onload = function () {
 
     console.log(user);
 }
-function home(){
-    window.location.href = '../UserDashboard/UserDashboard.html';
-}
 function logout(){
     localStorage.removeItem('User');
     window.location.href = '../Login Form/Login.html';

@@ -27,9 +27,9 @@ window.onload = async function () {
         if (!response.ok) {
             console.log("Failed to fetch medicines.");
         }
-        const medicines = await response.json();
-        console.log("Medicines:", medicines);
-        displayMedicines(medicines);
+        const usermedicines = await response.json();
+        console.log("UserMedicines:", usermedicines);
+        displayMedicines(usermedicines);
     } catch (error) {
         console.error("Error happened while fetching medicines.", error);
     }
@@ -38,13 +38,23 @@ function logout(){
     localStorage.removeItem('User');
     window.location.href = '../Login Form/Login.html';
 }
-function displayMedicines(medicines){
+async function displayMedicines(usermedicines){
     const medList= document.getElementById("medList");
 
-    medList.innerHTML= medicines.map(medicine =>
-        ` <div class= "medicine-card">
-            <h3>Medicine Name: </h3> <p>${medicine.medicine.medName}</p>
-            <h3>Scheduled Time: </h3> <p>${medicine.medTiming}</p>
-        </div>
-        `).join('');
+    const results = await Promise.all(
+        usermedicines.map(async (usermedicine) => {
+            console.log("Usermedicine Id:",usermedicine.id)
+            const response = await fetch(`http://localhost:8080/medicineLog/userMedicine/${usermedicine.id}`);
+            const medicineLog = await response.json();
+            console.log("MedicineLog:",medicineLog[0].medStock);
+
+            return `<div class="medicine-card">
+                <h3>Medicine Name: </h3> <p>${usermedicine.medicine.medName}</p>
+                <h3>Scheduled Time: </h3> <p>${usermedicine.medTiming}</p>
+                <h3>Remaining Medicines: </h3> <p>${medicineLog[0].medStock}</p>
+            </div>`;
+        })
+    );
+            medList.innerHTML = results.join('');
+
 }
