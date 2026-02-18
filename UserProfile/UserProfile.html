@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="UserProfile.css">
+</head>
+<body>
+    <header>
+        <h2>Sol-med</h2>
+    </header>
+    <div class="content">
+        <div class="sidebar">
+            <ul>
+                <li><a href="../UserDashboard/UserDashboard.html">Dashboard</a></li>
+                <li><a href="../AddMedicine/AddMedicine.html">Add a Medicine</a></li>
+                <li><a href="#">Caregiver</a></li>
+                <li><a href="#">My Schedule</a></li>
+                <li> <span onclick= "logout()">Logout</span></li>
+            </ul>
+        </div>
+        <main>
+            <div>
+                <div class="userInfo">
+                    <h3><span id="userName"></span></h3>
+                    <p><span id="id"></span></p>
+                </div>
+                <div class="details">
+                    <div>
+                        <div class="info">
+                            <p>Email: </p>
+                        </div>
+                        <div>        
+                            <p id="email"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info">
+                            <p>Age: </p>
+                        </div>
+                        <div>
+                            <p id="age"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info">
+                            <p>Phone No: </p>
+                        </div>
+                        <div>
+                            <p id="phoneno"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info">
+                            <p>Gender: </p>
+                        </div>
+                        <div>
+                            <p id="gender"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <script src="UserProfile.js"></script>
+</div>
+</body>
+</html>
