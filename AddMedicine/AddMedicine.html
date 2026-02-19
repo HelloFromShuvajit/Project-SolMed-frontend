@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Medicine</title>
+    <link rel="stylesheet" href="AddMedicine.css">
+</head>
+<body>
+    <header>
+        <h2>Sol-med</h2>
+    </header>
+    <div class="content">
+        <div class="sidebar">
+            <ul>
+                <li><a href="../UserProfile/UserProfile.html">Profile</a></li>
+                <li><a href="../UserDashboard/UserDashboard.html">Dashboard</a></li>
+                <li><a href="#">Caregiver</a></li>
+                <li><a href="#">My Schedule</a></li>
+                <li> <span onclick= "logout()">Logout</span></li>
+            </ul>
+        </div>
+        <main>
+            <div>
+                <div class="userInfo">
+                    <h3><span id="userName"></span></h3>
+                    <p><span id="id"></span></p>
+                </div>
+                <div class="newMed">
+                    <h3>Add a New Medicine</h3>
+                    <form action="">
+                        <div>
+                            <label for="medName">Medicine Name</label>
+                        </div>
+                        <div>
+                            <input type="text" id="medName" class="required">
+                        </div>
+                        <div>
+                            <label for="medStock">Medicine Stock</label>
+                        </div>
+                        <div>
+                            <input type="number" id="medStock" class="required">
+                        </div>
+                        <div>
+                            <label for="medTime">Medicine Scheduled Time</label>
+                        </div>
+                        <div>
+                            <input type="time" id="medTime" class="required">
+                        </div>
+                        <div>
+                            <button onclick="addMedicine()" type="button">Add Medicine</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </main>
+    <script src="AddMedicine.js"></script>
+</body>
+</html>

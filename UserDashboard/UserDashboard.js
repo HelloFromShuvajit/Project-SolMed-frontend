@@ -46,15 +46,15 @@ async function displayMedicines(usermedicines){
             console.log("Usermedicine Id:",usermedicine.id)
             const response = await fetch(`http://localhost:8080/medicineLog/userMedicine/${usermedicine.id}`);
             const medicineLog = await response.json();
-            console.log("MedicineLog:",medicineLog[0].medStock);
+            console.log("MedicineLog:",medicineLog);
+            const stock = medicineLog[0]?.medStock ?? 'N/A';//The ?. and ?? operators prevent crashes if any value is null or undefined, so the page will still render even if some data is missing.
 
             return `<div class="medicine-card">
                 <h3>Medicine Name: </h3> <p>${usermedicine.medicine.medName}</p>
                 <h3>Scheduled Time: </h3> <p>${usermedicine.medTiming}</p>
-                <h3>Remaining Medicines: </h3> <p>${medicineLog[0].medStock}</p>
+                <h3>Remaining Medicines: </h3> <p>${stock}</p>
             </div>`;
         })
     );
             medList.innerHTML = results.join('');
-
 }

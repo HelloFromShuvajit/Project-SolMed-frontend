@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 3 – Interactive Counter</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  h1 { color: #ffcc70; margin-bottom: 20px; }
+  .counter-box {
+    background: #222;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 204, 112, 0.4);
+    text-align: center;
+  }
+  #count {
+    font-size: 60px;
+    color: #ffcc70;
+    margin: 20px 0;
+  }
+  button {
+    background: #ffcc70;
+    border: none;
+    color: #222;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover { background: #ffe08a; }
+  p { color: #bbb; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<h1>⚡ Tony’s Interactive Counter</h1>
+<div class="counter-box">
+  <div id="count">0</div>
+  <div>
+    <button id="decrease">-</button>
+    <button id="reset">Reset</button>
+    <button id="increase">+</button>
+  </div>
+</div>
+
+<p>Tip: Try using your keyboard arrows ↑ ↓ and “r” key!</p>
+
+<script>
+  // ===============================
+  // STEP 1: Initialize count
+  // ===============================
+  let count = 0;
+
+  // ===============================
+  // STEP 2: Select elements
+  // ===============================
+  const countDisplay = document.getElementById('count');
+  const increaseBtn = document.getElementById('increase');
+  const decreaseBtn = document.getElementById('decrease');
+  const resetBtn = document.getElementById('reset');
+
+  // ===============================
+  // STEP 3: Add button event listeners
+  // ===============================
+  // TODO: Add click events to increase, decrease, and reset the count
+  // Example: increaseBtn.addEventListener('click', function() { ... });
+  increaseBtn.addEventListener("click",function(){
+    count++;
+    countDisplay.textContent = count;
+  });
+  decreaseBtn.addEventListener("click", function(){
+    count--;
+    countDisplay.textContent = count;
+  });
+  resetBtn.addEventListener("click", function(){
+    count=0;
+    countDisplay.textContent= count;
+  });
+  // ===============================
+  // BONUS STEP: Keyboard shortcuts
+  // ===============================
+  // TODO: Add keypress event for ArrowUp, ArrowDown, and 'r'
+  document.addEventListener("keydown", function(e){
+    if(e.key === "ArrowUp") count++;
+    if(e.key === "ArrowDown") count--;
+    if(e.key === "r") count=0;
+    countDisplay.textContent = count;
+  });
+</script>
+
+</body>
+</html>

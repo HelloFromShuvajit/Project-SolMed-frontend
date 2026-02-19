@@ -34,7 +34,7 @@ main{
     text-align: center;
     border: #4d6997;
     min-height: 50vh;
-    margin-left: 250px;
+    margin-left: 50px;
 }
 main div{
     display: flex;

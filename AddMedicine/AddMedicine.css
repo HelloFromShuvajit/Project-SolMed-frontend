@@ -1,6 +1,6 @@
 header{
     background-color: white;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     margin-top: 0px;
     font-family:Open sans;
     font-weight: bold;
@@ -8,7 +8,6 @@ header{
     padding-bottom: 1.5rem;
     padding-top: 1rem;
     color: #5d7eb3;
-    font-family:Open sans;
 }
 body{
     font-family:Open sans;
@@ -21,10 +20,6 @@ header h2{
 }
 h3{
     color: blueviolet;
-}
-p{
-    margin-top: 0px;
-    padding-top: 0px;
 }
 .content{
     display: flex;
@@ -39,7 +34,6 @@ main{
     text-align: center;
     border: #4d6997;
     min-height: 50vh;
-    margin-left: 50px;
 }
 main div{
     display: flex;
@@ -74,6 +68,7 @@ main div{
     background-color: #4d6997;
     color: aliceblue;
 }
+
 .userInfo{
     flex-direction: column;
     gap:0px;
@@ -91,25 +86,53 @@ main div{
     background-color: white;
     color: #4d6997;
 }
-.medInfo{
-    background-color:#5d7eb3;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 2rem;
-    border-radius: 15px;
-    max-width: 800px;
-}
-.medList{
+.newMed{
     display: flex;
     flex-direction: column;
+    background-color: white;
+    max-height: 700px;
+    max-width: fit-content;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
-.medicine-card {
-    background: white;
+.newMed form{
+    display: block;
+    text-align: left;
+}
+form div{
+    text-align: left;
+    box-shadow: none;
+    margin-bottom: 5px;
+    box-shadow: none;
+}
+
+input{
+    background-color: #dfe9f8;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: 2px solid #9fbbe7;
+}
+input:hover{
+    background-color:aliceblue;
+}
+button{
+    background-color: blueviolet;
+    color: white;
     border-radius: 8px;
-    padding: 15px;
-    margin: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    padding: 10px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin: auto;
+    border: none;
+    margin-top: 5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+button:hover{
+    background-color: white;
+    color: blueviolet;
+    border-radius: 10px;
 }
