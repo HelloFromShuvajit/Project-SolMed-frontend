@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UserDashboard</title>
-    <link rel="stylesheet" href="UserDashboard.css">
+    <title>My Medicine</title>
+    <link rel="stylesheet" href="Medicine.css">
     <link rel="stylesheet" href="../CommonCss/Common.css">
 
 </head>
@@ -15,9 +15,9 @@
     <div class="content">
         <div class="sidebar">
             <ul>
-                <li><a href="../UserProfile/UserProfile.html"> Profile</a></li>
+                <li><a href="../UserProfile/UserProfile.html">Profile</a></li>
+                <li><a href="../UserDashboard/UserDashboard.html">Dashboard</a></li>
                 <li><a href="../AddMedicine/AddMedicine.html">Add a Medicine</a></li>
-                <li><a href="../MedicineLog/Medicine.html">My Medicines</a></li>
                 <li><a href="#">My Schedule</a></li>
                 <li> <span onclick= "logout()">Logout</span></li>
             </ul>
@@ -25,16 +25,16 @@
         <main>
             <div>
                 <div class="userInfo">
-                    <h3>Welcome, <span id="userName"></span></h3>
+                    <h3><span id="userName"></span></h3>
                     <p><span id="id"></span></p>
                 </div>
-                <div class="medInfo">
+                <div class="medicineList">
                     <h1>My medicines</h1>
                     <div class="medList" id="medList"></div>
                 </div>
-                <script src="UserDashboard.js"></script>
             </div>
         </main>
-    </div>
+        </div>
+        <script src="Medicine.js"></script>
 </body>
 </html>

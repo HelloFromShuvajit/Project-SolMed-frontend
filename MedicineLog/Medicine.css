@@ -1,4 +1,4 @@
-.medInfo{
+.medicineList{
     background-color:#5d7eb3;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     padding: 2rem;
@@ -19,4 +19,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+.updateMedStock{
+    display: flex;
+    flex-direction: row;
+}
+.medTaken-btn{
+    background-color: greenyellow;
+    color: black;
+}
+.refill-btn{
+    background-color: green;
+    color: beige;
 }

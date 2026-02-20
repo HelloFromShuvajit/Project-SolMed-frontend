@@ -1,0 +1,107 @@
+header{
+    background-color: white;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-family:Open sans;
+    font-weight: bold;
+    padding-left: 50px;
+    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+    color: #5d7eb3;
+}
+body{
+    font-family:Open sans;
+    padding:0px;
+    margin: 0;
+    background-color:aliceblue;
+}
+header h2{
+    margin: 0px;
+}
+h3{
+    color: blueviolet;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+}
+main{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    text-align: center;
+    border: #4d6997;
+    min-height: 50vh;
+}
+main div{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar{
+    background-color: white;
+    margin-top: 0px;
+    color: #4d6997;
+    width: 300px;
+    height: 100%;
+    margin-top: 2rem;
+    gap: 1.5rem;
+    display: block;
+}
+.sidebar ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 300px;
+}
+.sidebar a,span{
+    background-color: white;
+    color:#4d6997;
+    text-decoration: none;
+    border-radius: 15px;
+    padding-right: 1.5rem;
+    padding-left: 1rem;
+}
+.sidebar a:hover,span:hover{
+    background-color: #4d6997;
+    color: aliceblue;
+}
+.userInfo{
+    flex-direction: row;
+    gap:2rem;
+    padding:20px;
+    font-weight: normal;
+    border-radius: 15px;
+    text-align: center;
+    background-color: white;
+}
+.userInfo span{
+    background-color: white;
+    color: #4d6997;
+}
+.userInfo span:hover{
+    background-color: white;
+    color: #4d6997;
+}
+button{
+    background-color: blueviolet;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin: auto;
+    border: none;
+    margin-top: 5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+button:hover{
+    background-color: white;
+    color: blueviolet;
+    border-radius: 10px;
+}
