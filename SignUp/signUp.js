@@ -19,7 +19,8 @@ async function signup() {
                 age:parseInt(age),
                 gender:gender,
                 password:password,
-                phone:phoneNo
+                phone:phoneNo,
+                position: 'User'
             })
         });
         console.log('Response status:', response.status); 

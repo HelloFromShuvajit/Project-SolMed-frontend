@@ -77,6 +77,7 @@ async function medTaken(medLogId) {
         const markMedicine = await response.json();
         console.log("Marked? :", markMedicine);
         alert(markMedicine.message);
+        window.location.reload();
     } catch (error) {
         console.error("Error happened while marking medicine: ", error);
     }
@@ -98,8 +99,10 @@ async function refill(medLogId) {
             
         }
         const refillMedicine = await response.json();
-        console.log("Marked? :", refillMedicine);
+        console.log("Refilled? :", refillMedicine);
         alert(refillMedicine.message);
+        window.location.reload();
+
     } catch (error) {
         console.error("Error happened while refilling medicine: ", error);
     }

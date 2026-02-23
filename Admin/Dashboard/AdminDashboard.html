@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../Dashboard/AdminDashboard.css">
+    <link rel="stylesheet" href="../../CommonCss/Common.css">
+</head>
+<body>
+    <header>
+        <h2>Sol-med</h2>
+    </header>
+    <div class="content">
+        <div class="sidebar">
+            <ul>
+                <li><a href="../AllUsers/AllUsers.html">All Users</a></li>
+                <li><a href="../AllMedicines/AllMedicines.html">All Medicines</a></li>
+                <li> <span onclick= "logout()">Logout</span></li>
+            </ul>
+        </div>
+        <main>
+        <div>
+            <div class="UserInfo">
+                <h2>Welcome <span id="userName"></span></h2>
+            </div>
+        </div>
+    </main>
+    </div>
+    <script src="AdminDashboard.js"></script>
+</body>
+</html>

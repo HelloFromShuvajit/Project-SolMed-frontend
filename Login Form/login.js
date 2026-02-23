@@ -20,7 +20,11 @@ async function login() {
         console.log("User:", data);
         
         localStorage.setItem('User',JSON.stringify(data));
-        window.location.href='../UserDashboard/UserDashboard.html';
+        if (data.position ==='Admin') {
+            window.location.href='../Admin/Dashboard/AdminDashboard.html';
+        } else {
+            window.location.href='../UserDashboard/UserDashboard.html';
+        }
         
     }
     catch(error){
