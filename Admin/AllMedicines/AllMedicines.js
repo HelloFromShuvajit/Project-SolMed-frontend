@@ -45,10 +45,23 @@ async function allmeds() {
 }
 async function displayMedList(medicines) {
     const medList = document.getElementById("medList");
-    medList.innerHTML = medicines.map(med => `
-        <div class="med-card">
-            <h3>Medicine Id:</h3> <p>${med.medId}</p>
-            <h3>Medicine Name:</h3> <p>${med.medName}</p>
-        </div>
-    `).join('');
+    medList.innerHTML = `
+<div class="med-card">
+    <table>
+    <thead>
+        <tr>
+            <th>Medicine Id</th>
+            <th>Medicine Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        ${medicines.map(med => `
+            <tr>
+                <td>${med.medId}</td>
+                <td>${med.medName}</td>
+            </tr>    
+            `).join('')}
+        </tbody>
+        </table>
+        </div>`
 }

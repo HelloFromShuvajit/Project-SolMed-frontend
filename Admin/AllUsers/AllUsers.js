@@ -45,14 +45,31 @@ async function allusers() {
 }
 async function displayUserList(users) {
     const userList = document.getElementById("userList");
-    userList.innerHTML = users.map(aUser => `
-        <div class="user-card">
-            <h3>User Id:</h3> <p>${aUser.id}</p>
-            <h3>User Email:</h3> <p>${aUser.email}</p>
-            <h3>User Name:</h3> <p>${aUser.name}</p>
-            <h3>User Age:</h3> <p>${aUser.age}</p>
-            <h3>User Gender:</h3> <p>${aUser.gender}</p>
-            <h3>User Phone:</h3> <p>${aUser.phone}</p>
-        </div>
-    `).join('');
+    userList.innerHTML = `
+<div class="user-card">
+    <table>
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Age </th>
+            <th>Gender </th>
+            <th>Phone No </th>
+        </tr>
+        </thead>
+        <tbody>
+        ${users.map(aUser => `
+            <tr>
+                <td>${aUser.id}</td>
+                <td>${aUser.email}</td>
+                <td>${aUser.name}</td>
+                <td>${aUser.age}</td>
+                <td>${aUser.gender}</td>
+                <td>${aUser.phone}</td>
+            </tr>    
+            `).join('')}
+        </tbody>
+        </table>
+        </div>`
 }

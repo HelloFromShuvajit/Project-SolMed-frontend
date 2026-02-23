@@ -51,10 +51,10 @@ async function displayMedicines(usermedicines){
                 <h3>Medicine Name: </h3> <p>${usermedicine.medicine.medName}</p>
                 <h3>Scheduled Time: </h3> <p>${usermedicine.medTiming}</p>
                 <h3>Remaining Medicines: </h3> <p>${stock}</p>
-            </div>
-            <div class="updateMedStock">
-            <button onclick="medTaken(${medicineLog[0].MedLogId})" type="button" class="medTaken-btn">Mark Taken</button>
-            <button onclick="refill(${medicineLog[0].MedLogId})" type="button" class="refill-btn">Refill Stock</button>
+                <div class="updateMedStock">
+                <button onclick="medTaken(${medicineLog[0].MedLogId})" type="button" class="medTaken-btn">Mark Taken</button>
+                <button onclick="refill(${medicineLog[0].MedLogId})" type="button" class="refill-btn">Refill Stock</button>
+                </div>
             </div>`;
         })
     );
