@@ -1,0 +1,25 @@
+.details{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding:20px;
+    background-color: #5d7eb3;
+    font-weight: normal;
+    color: #4d6997 ;
+    border-radius: 15px;
+    text-align: left;
+    max-width :800px;
+}
+.details div{
+    box-shadow: none;
+    padding: 0px;
+    gap: .5rem;
+    flex-direction: row;
+}
+.details div div{
+    color: white;
+}
+.info{
+    font-weight: bold;
+    color: black;
+}

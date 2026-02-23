@@ -1,0 +1,33 @@
+.newMed{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    max-height: 700px;
+    max-width: fit-content;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.newMed form{
+    display: block;
+    text-align: left;
+}
+form div{
+    text-align: left;
+    box-shadow: none;
+    margin-bottom: 5px;
+    box-shadow: none;
+}
+
+input{
+    background-color: #dfe9f8;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: 2px solid #9fbbe7;
+}
+input:hover{
+    background-color:aliceblue;
+}

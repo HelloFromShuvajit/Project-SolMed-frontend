@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Medicine</title>
+    <link rel="stylesheet" href="Medicine.css">
+    <link rel="stylesheet" href="../CommonCss/Common.css">
+
+</head>
+<body>
+    <header>
+        <h2>Sol-med</h2>
+    </header>
+    <div class="content">
+        <div class="sidebar">
+            <ul>
+                <li><a href="../UserProfile/UserProfile.html">Profile</a></li>
+                <li><a href="../UserDashboard/UserDashboard.html">Dashboard</a></li>
+                <li><a href="../AddMedicine/AddMedicine.html">Add a Medicine</a></li>
+                <li><a href="#">My Schedule</a></li>
+                <li> <span onclick= "logout()">Logout</span></li>
+            </ul>
+        </div>
+        <main>
+            <div>
+                <div class="userInfo">
+                    <h3><span id="userName"></span></h3>
+                    <p><span id="id"></span></p>
+                </div>
+                <div class="medicineList">
+                    <h1>My medicines</h1>
+                    <div class="medList" id="medList"></div>
+                </div>
+            </div>
+        </main>
+        </div>
+        <script src="Medicine.js"></script>
+</body>
+</html>
