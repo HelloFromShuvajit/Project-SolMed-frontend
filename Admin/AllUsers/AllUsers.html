@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <link rel="stylesheet" href="AllUsers.css">
+    <link rel="stylesheet" href="../../CommonCss/Common.css">
+</head>
+<body>
+    <header>
+        <h2>Sol-med</h2>
+    </header>
+    <div class="content">
+        <div class="sidebar">
+            <ul>
+                <li><a href="../AllMedicines/AllMedicines.html">All Medicines</a></li>
+                <li> <span onclick= "logout()">Logout</span></li>
+            </ul>
+        </div>
+        <main>
+        <div>
+            <div class="UserInfo">
+                <h3><span id="userName"></span></h3>
+            </div>
+            <div class="allUserList">
+                <h2>All users</h2>
+                <div id="userList" class="userList"></div>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <script src="AllUsers.js"></script>
+</body>
+</html>
