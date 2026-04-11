@@ -1,50 +1,47 @@
 if (!localStorage.getItem('User')) {
-window.location.href = '../Login Form/Login.html';
+    window.location.href = '../../Login Form/index.html';
 }
-window.onload = async function () {
-    const userString = localStorage.getItem('User');
-    console.log(userString);
 
-    if(!userString){
-        window.location.href = '../Login Form/login.html';
-        console.log("userString not ok");
+window.onload = async function () {
+    const btnLogOut = document.getElementById('logOut-btn');
+    if (btnLogOut) btnLogOut.addEventListener('click', logout);
+
+    const user = getUserFromToken();
+    if (!user) {
+        window.location.href = '../../Login Form/index.html';
         return;
     }
-    const user = JSON.parse(userString);
+    if (user.position !== 'Admin') {
+        window.location.href = '../../UserDashboard/UserDashboard.html';
+        return;
+    }
     document.getElementById('userName').textContent = user.name;
 
-    const admin = user.position;
-    console.log(admin);
     allmeds();
-}
+};
 
-function logout(){
-    localStorage.removeItem('User');
-    window.location.href = '../../Login Form/Login.html';
-}
 async function allmeds() {
-    console.log("Calling API to show all meds...");
     try {
-        const response = await fetch(`http://localhost:8080/medicine/list` , {
-            method: 'GET',
-            headers: {
-                'Content-Type' : 'application/json',
-            }
+        const response = await authFetch(`${API_BASE}/medicine/list`, {
+            method: 'GET'
         });
-        if(!response.ok){
-            console.log("Failed to fetch all medicnes.");
+        if (response.status === 401) {
+            window.location.href = '../../Login Form/index.html';
+            return;
         }
-        const medicines= await response.json();
-        console.log(medicines);
+        if (!response.ok) {
+            console.log('Failed to fetch all medicines.');
+            return;
+        }
+        const medicines = await response.json();
         displayMedList(medicines);
     } catch (error) {
-        console.error("Error happened while fetching medicines.", error);
-
+        console.error('Error happened while fetching medicines.', error);
     }
-
 }
+
 async function displayMedList(medicines) {
-    const medList = document.getElementById("medList");
+    const medList = document.getElementById('medList');
     medList.innerHTML = `
 <div class="med-card">
     <table>
@@ -63,5 +60,5 @@ async function displayMedList(medicines) {
             `).join('')}
         </tbody>
         </table>
-        </div>`
+        </div>`;
 }

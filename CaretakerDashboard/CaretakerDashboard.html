@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sol-med — Caretaker</title>
+    <link rel="stylesheet" href="../CommonCss/Common.css">
+    <link rel="stylesheet" href="CaretakerDashboard.css">
+</head>
+<body>
+    <header>
+        <h2>Sol-med</h2>
+    </header>
+    <div class="caretaker-banner" role="status">
+        Caretaker view — read-only access to linked patients’ medicines and adherence.
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <ul>
+                <li><span class="sidebar-active">Caretaker home</span></li>
+                <li><span onclick="logout()">Logout</span></li>
+            </ul>
+        </div>
+        <main>
+            <div class="userInfo">
+                <h3><span id="userName"></span></h3>
+                <p><span id="id"></span></p>
+            </div>
+            <section class="link-patient-panel" aria-labelledby="linkPatientHeading">
+                <h3 id="linkPatientHeading" class="section-title">Connect a patient</h3>
+                <p class="help-text">Enter the email your family member used to register as a <strong>patient</strong>. They must open their patient dashboard and <strong>approve</strong> your request before you see them here.</p>
+                <div class="link-patient-row">
+                    <input type="email" id="patientEmailInput" placeholder="Patient’s registered email" autocomplete="email" />
+                    <button type="button" id="requestLinkBtn" class="btn-primary">Send link request</button>
+                </div>
+                <p id="linkPatientMsg" class="inline-msg" role="status"></p>
+            </section>
+            <h3 class="section-title">Pending requests</h3>
+            <div id="pendingRequests" class="pending-requests"></div>
+
+            <h3 class="section-title">Linked patients</h3>
+            <div id="patientCards" class="patient-cards"></div>
+        </main>
+    </div>
+    <script src="../Common.js"></script>
+    <script src="CaretakerDashboard.js"></script>
+</body>
+</html>

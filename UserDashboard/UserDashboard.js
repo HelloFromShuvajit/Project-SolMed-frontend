@@ -1,53 +1,64 @@
-if (!localStorage.getItem('User')) {
-window.location.href = '../Login Form/Login.html';
-}
-window.onload = async function () {
-    const userString = localStorage.getItem('User');
-    console.log(userString);
 
-    if(!userString){
-        window.location.href = '../Login Form/login.html';
-        console.log("userString not ok");
+if (!localStorage.getItem('User')) {
+    window.location.href = '../Login Form/index.html';
+}
+
+window.onload = async function () {
+    const user = getUserFromToken();
+
+    if (!user) {
+        window.location.href = '../Login Form/index.html';
         return;
     }
-    const user = JSON.parse(userString);
+    if (user.role === 'CARETAKER') {
+        window.location.href = '../CaretakerDashboard/CaretakerDashboard.html';
+        return;
+    }
     document.getElementById('userName').textContent = user.name;
-    document.getElementById('id').textContent = 'SM-UID:'+user.id;
+    document.getElementById('id').textContent = 'SM-UID:' + user.id;
 
     const userId = user.id;
-    console.log(userId);
     try {
-        console.log("Calling API to get UserMedicines for: ", userId);
-        const response = await fetch(`http://localhost:8080/userMedicine/user/${userId}`,{
-            method : 'GET',
-            headers : {
-                'Content-Type' : 'application/json',
-            }
+        const response = await authFetch(`${API_BASE}/userMedicine/user/${userId}`, {
+            method: 'GET'
         });
+        if (response.status === 401) {
+            window.location.href = '../Login Form/index.html';
+            return;
+        }
         if (!response.ok) {
-            console.log("Failed to fetch medicines.");
+            console.log('Failed to fetch medicines.');
+            return;
         }
         const usermedicines = await response.json();
-        console.log("UserMedicines:", usermedicines);
         displayMedicines(usermedicines);
     } catch (error) {
-        console.error("Error happened while fetching medicines.", error);
+        console.error('Error happened while fetching medicines.', error);
     }
+};
+
+
+function escapeReq(s) {
+    return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/"/g, '&quot;');
 }
-function logout(){
-    localStorage.removeItem('User');
-    window.location.href = '../Login Form/Login.html';
-}
-async function displayMedicines(usermedicines){
-    const medList= document.getElementById("medList");
+
+async function displayMedicines(usermedicines) {
+    const medList = document.getElementById('medList');
 
     const results = await Promise.all(
         usermedicines.map(async (usermedicine) => {
-            console.log("Usermedicine Id:",usermedicine.id)
-            const response = await fetch(`http://localhost:8080/medicineLog/userMedicine/${usermedicine.id}`);
+            const response = await authFetch(
+                `${API_BASE}/medicineLog/userMedicine/${usermedicine.id}`,
+                { method: 'GET' }
+            );
+            if (!response.ok) {
+                return `<div class="medicine-card"><p>Could not load log</p></div>`;
+            }
             const medicineLog = await response.json();
-            console.log("MedicineLog:",medicineLog);
-            const stock = medicineLog[0]?.medStock ?? 'N/A';//The ?. and ?? operators prevent crashes if any value is null or undefined, so the page will still render even if some data is missing.
+            const stock = medicineLog[0]?.medStock ?? 'N/A';
 
             return `<div class="medicine-card">
                 <h3>Medicine Name: </h3> <p>${usermedicine.medicine.medName}</p>
@@ -56,5 +67,5 @@ async function displayMedicines(usermedicines){
             </div>`;
         })
     );
-            medList.innerHTML = results.join('');
+    medList.innerHTML = results.join('');
 }

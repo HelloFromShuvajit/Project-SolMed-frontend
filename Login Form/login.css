@@ -1,167 +1,171 @@
-header{
-    background-color: white;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    font-family:Open sans;
-    font-weight: bold;
-    padding-left: 50px;
-    padding-bottom: 1.5rem;
-    padding-top: 1rem;
-    color: #5d7eb3;
-    font-family:Open sans;
+/* Login — extends Common.css; load Common.css first in HTML */
+
+header {
+    background: var(--color-surface, #fff);
+    border-bottom: 1px solid var(--border, #e2e8f0);
+    box-shadow: var(--shadow, 0 1px 2px rgba(15, 23, 42, 0.06));
 }
-body{
-    font-family:Open sans;
-    padding:0px;
-    margin: 0;
-    background-color:aliceblue;
-}
-header h2{
-    margin: 0px;
-}
-h3{
-    color: blueviolet;
-}
-main{
+
+main {
     display: flex;
-    padding: 20px;
+    padding: 2rem 1rem;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    text-align: center;
-    border: #4d6997;
-    min-height: 50vh;
+    min-height: calc(100vh - 120px);
+    border: none;
 }
-main div{
+
+main > div {
     display: flex;
-    max-height: 700px;
-    max-width: fit-content;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+    border-radius: var(--radius-lg, 18px);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg, 0 20px 50px rgba(15, 23, 42, 0.1));
+    border: 1px solid var(--border, #e2e8f0);
 }
-main div .one{
+
+main div .one {
+    flex: 0 0 42%;
+    min-width: 200px;
     flex-direction: column;
-    padding:20px;
-    background-color: aqua;
-    font-weight: normal;
-    color: #4d6997 ;
-    border-radius: 0px;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    padding: 2rem 1.75rem;
+    background: linear-gradient(165deg, #1d4ed8 0%, #2563eb 40%, #0891b2 100%);
+    color: #f8fafc;
+    border-radius: 0;
     text-align: left;
-    max-width :150px;
+    justify-content: space-between;
+    gap: 1rem;
 }
-main div .one div{
+
+main div .one h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin: 0;
+}
+
+main div .one p {
+    font-size: 0.9rem;
+    opacity: 0.92;
+    line-height: 1.55;
+    margin: 0;
+}
+
+main div .one div {
     box-shadow: none;
     text-align: left;
 }
-main div .one p{
-    font-size: small;
-}
-.motto{
+
+.motto {
     margin-top: auto;
     font-style: italic;
+    font-size: 0.85rem !important;
+    opacity: 0.9;
 }
-.two{
+
+.two {
+    flex: 1;
     flex-direction: column;
-    background-color:white;
-    border-radius: 0px;
-    border-bottom-right-radius: 15px;
-    border-top-right-radius: 15px;
-    color: #5d7eb3;    
-    font-weight:normal;
-    padding:20px;
+    background: var(--color-surface, #fff);
+    padding: 2rem 1.75rem;
     text-align: left;
+    gap: 0.75rem;
 }
-.two h3{
-    color: black;
-    margin-bottom: 0px;
+
+.two h3 {
+    color: var(--text, #0f172a);
+    font-size: 1.35rem;
+    margin: 0;
 }
-.two p{
-    font-size: small;
-    margin-top: .2rem;
+
+.two > p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #64748b);
+    margin: 0 0 0.5rem 0;
 }
-.two form{
+
+.two form {
     display: block;
-    font-weight: bold;
+    margin-top: 0.5rem;
 }
-.two form div{
-    text-align: left;
+
+.two form div {
+    margin-bottom: 0.85rem;
     box-shadow: none;
-    margin-bottom: 5px;
-    box-shadow: none;
 }
-input{
-    background-color: #dfe9f8;
-    border-radius: 5px;
-    padding: 10px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border: 2px solid #9fbbe7;
+
+.two form label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
 }
-input:hover{
-    background-color:aliceblue;
+
+.two button[type="button"],
+.two button:not(.googlebutton) {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
 }
-button{
-    background-color: blueviolet;
-    color: white;
-    border-radius: 8px;
-    padding: 10px;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    margin: auto;
-    border: none;
-    margin-top: 5px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-button:hover{
-    background-color: white;
-    color: blueviolet;
-    border-radius: 10px;
-}
-a:hover{
-    text-decoration:none;
-    color:  olive;
-}
-.google{
-    border-radius: 5px;
-    background-color: white;
+
+.google {
     text-align: center;
-    padding: auto;
-    margin: auto;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 }
-.signup, .or{
-    padding: 0px;
+
+.signup,
+.or {
+    padding: 0;
     box-shadow: none;
-    margin: auto;
+    margin: 0.75rem 0 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
-.or div{
-    box-shadow: none;
-}
-.googlebutton{
-    background-color: white;
-    color: blueviolet;
-    border-radius: 5px;
-    border: 1px solid blueviolet;
-    margin: auto;
-    padding: 5px;
-    padding-left: 2rem;
-    padding-right: 2rem;
+
+.or div {
     box-shadow: none;
 }
-.googlebutton:hover{
-    background-color: blueviolet;
-    color: white;
-    border-radius: 5px;
+
+.googlebutton {
+    width: 100%;
+    background: var(--color-surface, #fff);
+    color: var(--color-primary, #2563eb);
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-sm, 8px);
+    padding: 0.65rem 1rem;
+    box-shadow: none;
+    font-weight: 600;
 }
-footer{
-    margin-top: 2rem;
-    padding: .5rem;
+
+.googlebutton:hover {
+    background: var(--color-surface-2, #f8fafc);
+    color: var(--color-primary, #2563eb);
+    border-color: #cbd5e1;
+}
+
+footer {
+    margin-top: auto;
+    padding: 1rem 1.5rem 1.5rem;
     text-align: center;
-    font-size: small;
-    font-family:Open sans;
-    background-color: white;
-    color: #1f58b4;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: transparent;
+}
+
+footer a {
+    color: var(--color-primary);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+    main > div {
+        flex-direction: column;
+    }
+
+    main div .one {
+        min-height: 200px;
+    }
 }

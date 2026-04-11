@@ -3,7 +3,7 @@ async function login() {
     const password =  document.getElementById('password').value;
     try{
         console.log("Calling API for login");
-        const response = await fetch(`http://localhost:8080/user/login`,{
+        const response = await fetch(`${API_BASE}/api/auth/login`,{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -14,16 +14,21 @@ async function login() {
             })
         });
         if(!response.ok){
-            throw new Error("Error happened.");
+            throw new Error("Error happened in fetching API.");
         }
         const data = await response.json();
-        console.log("User:", data);
+        localStorage.setItem('User', JSON.stringify(data));
+        console.log("token:", data);
         
-        localStorage.setItem('User',JSON.stringify(data));
-        if (data.position ==='Admin') {
-            window.location.href='../Admin/AllUsers/AllUsers.html';
-        } else {
-            window.location.href='../UserDashboard/UserDashboard.html';
+        
+        const decoded = getUserFromToken();
+
+        if (decoded.role === 'CARETAKER') {
+            window.location.href = '../CaretakerDashboard/CaretakerDashboard.html';
+        } else if (decoded.position === 'Admin') {
+            window.location.href = '../Admin/AllUsers/AllUsers.html';
+        } else if (decoded.position === 'User') {
+            window.location.href = '../MedicineLog/Medicine.html';
         }
         
     }

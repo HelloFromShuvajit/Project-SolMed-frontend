@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="UserProfile.css">
     <link rel="stylesheet" href="../CommonCss/Common.css">
+    <link rel="stylesheet" href="UserProfile.css">
 </head>
 <body>
     <header>
@@ -14,10 +14,9 @@
     <div class="content">
         <div class="sidebar">
             <ul>
-                <li><a href="../UserDashboard/UserDashboard.html">Dashboard</a></li>
                 <li><a href="../AddMedicine/AddMedicine.html">Add a Medicine</a></li>
                 <li><a href="../MedicineLog/Medicine.html">My Medicines</a></li>
-                <li> <span onclick= "logout()">Logout</span></li>
+                <li> <span onclick="logout()">Logout</span></li>
             </ul>
         </div>
         <main>
@@ -59,10 +58,22 @@
                             <p id="gender"></p>
                         </div>
                     </div>
-                </div>
+                    
+                <section class="caretaker-requests-section" aria-labelledby="caretakerReqHeading">
+                    <h2 id="caretakerReqHeading" class="page-heading">Caretaker link requests</h2>
+                    <p class="subtle">When someone asks to monitor your medicines, approve or reject here.</p>
+                    <div id="caretakerRequestsList" class="caretaker-requests-list"></div>
+                </section>
+                <section class="caretaker-linked-section" aria-labelledby="caretakerLinkedHeading">
+                    <h2 id="caretakerLinkedHeading" class="page-heading">Linked caretakers</h2>
+                    <p class="subtle">People currently approved to view your medicine adherence.</p>
+                    <ul id="caretakerList" class="caretaker-linked-list"></ul>
+                    <p id="caretakerInviteMsg" class="subtle"></p>
+                </section>
             </div>
         </main>
+    </div>
+    <script src="../Common.js"></script>
     <script src="UserProfile.js"></script>
-</div>
 </body>
 </html>

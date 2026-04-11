@@ -1,0 +1,120 @@
+.readonly-med-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.readonly-med-card {
+    background: var(--color-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    box-shadow: var(--shadow);
+}
+
+.readonly-med-card h4 {
+    margin: 0 0 0.35rem 0;
+    font-size: 1rem;
+}
+
+.readonly-med-card p {
+    margin: 0.15rem 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.section-title {
+    margin: 1.25rem 0 0.65rem 0;
+}
+
+.hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0 0 0.75rem 0;
+}
+
+.heatmap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.heatmap-day {
+    min-width: 72px;
+    padding: 0.5rem 0.45rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    color: #0f172a;
+}
+
+.heatmap-day .dlabel {
+    display: block;
+    font-weight: 500;
+    opacity: 0.85;
+    margin-bottom: 0.25rem;
+}
+
+.hm-green {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+
+.hm-yellow {
+    background: #fef9c3;
+    border-color: #ca8a04;
+}
+
+.hm-red {
+    background: #fee2e2;
+    border-color: #dc2626;
+}
+
+.hm-gray {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: var(--text-muted);
+}
+
+.hm-selected {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.day-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: var(--color-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.day-table th,
+.day-table td {
+    padding: 0.55rem 0.65rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+.day-table th {
+    background: var(--color-surface-2);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+}
+
+.caretaker-banner {
+    background: linear-gradient(90deg, #1e3a5f 0%, #2563eb 100%);
+    color: #f8fafc;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.88rem;
+    text-align: center;
+}

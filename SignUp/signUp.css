@@ -1,184 +1,167 @@
-header{
-    display: flex ;
-    flex-direction: row;
-    background-color: white;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    font-family:Open sans;
-    font-weight: bold;
-    padding-left: 50px;
-    padding-bottom: 1.5rem;
-    padding-top: 1rem;
-    color: #5d7eb3;
-    font-family:Open sans;
-}
-header h2{
-    margin: 0px;
-}
-h2 span{
-    color: #1f58b4;
-}
-.help{
-    margin-left: auto;
-    padding-right: 2rem;
-    font-size: small;
-}
-main{
+/* Sign up — extends Common.css */
+
+header {
     display: flex;
-    padding: 20px;
-    justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    text-align: center;
-    border: #4d6997;
-    min-height: 50vh;
-}
-main div{
-    display: flex;
-    max-height: 700px;
-    max-width: fit-content;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
-}
-main div .one{
-    flex-direction: column;
-    padding:20px;
-    background-color: aqua;
-    font-weight: normal;
-    color: black ;
-    border-radius: 0px;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    text-align: left;
-    max-width : 200px;
-}
-main div .one div{
-    box-shadow: none;
-    text-align: left;
-    flex-direction: column;
-}
-main div .one p{
-    font-size: small;
-    color: #1f58b4;
-}
-.advantages{
-    margin: 0px;
-    padding-left: 1rem;
-    margin-top: 0px;
-}
-.advantages p{
-    margin: 0px;
-}
-.adTitle{
-    font-weight: bold;
-    margin: 0px;
-    padding-top: .5rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.two{
-    flex-direction: column;
-    background-color:white;
-    border-radius: 0px;
-    border-bottom-right-radius: 15px;
-    border-top-right-radius: 15px;
-    color: #5d7eb3;    
-    font-weight:normal;
-    padding:20px;
-    text-align: left;
-}
-.two h3{
-    color: black;
-    margin-bottom: 0px;
-}
-.two p{
-    font-size: small;
-    margin-top: .2rem;
-}
-.two form{
-    display: block;
-    font-weight: bold;
-}
-.two form div{
-    text-align: left;
-    box-shadow: none;
-    margin-bottom: 5px;
-    box-shadow: none;
-    flex-direction: column;
-}
-.two form div div{
-    font-weight: lighter;
-}
-input{
-    background-color: #dfe9f8;
-    border-radius: 5px;
-    padding: 10px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border: 2px solid #9fbbe7;
-}
-input:hover{
-    background-color:aliceblue;
-}
-button{
-    background-color: blueviolet;
-    color: white;
-    border-radius: 8px;
-    padding: 10px;
-    padding-left: 7rem;
-    padding-right: 7rem;
-    margin: auto;
-    border: none;
-    margin-top: 5px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-button:hover{
-    background-color: white;
-    color: blueviolet;
-    border-radius: 10px;
-}
-.login, .or{
-    padding: 0px;
-    box-shadow: none;
-    margin: auto;
-}
-.or div{
-    box-shadow: none;
-}
-body{
-    font-family:Open sans;
-    padding:0px;
+header > div:first-child h2 {
     margin: 0;
-    background-color:aliceblue;
 }
-main{
+
+h2 span {
+    color: #46cd4b;
+}
+
+.help {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.help a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.help a:hover {
+    text-decoration: underline;
+}
+
+main {
     display: flex;
-    padding: 20px;
+    padding: 2rem 1rem 3rem;
     justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    text-align: center;
-    border: #4d6997;
-    min-height: 50vh;
+    align-items: flex-start;
+    min-height: calc(100vh - 120px);
 }
-main div{
+
+main > div {
     display: flex;
-    max-height: 1000px;
-    max-width: fit-content;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
+    max-width: 960px;
+    width: 100%;
+    border-radius: var(--radius-lg, 18px);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg, 0 20px 50px rgba(15, 23, 42, 0.1));
+    border: 1px solid var(--border, #e2e8f0);
 }
-a:hover{
-    text-decoration:none;
-    color:  olive;
+
+main div .one {
+    flex: 0 0 38%;
+    min-width: 200px;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(165deg, #0e7490 0%, #2563eb 55%, #4f46e5 100%);
+    color: #f8fafc;
+    text-align: left;
+    gap: 1rem;
 }
-footer{
-    margin-top: 2rem;
-    padding: .5rem;
+
+main div .one h2 {
+    color: #fff;
+    font-size: 1.35rem;
+    margin: 0;
+    line-height: 1.35;
+}
+
+main div .one p {
+    font-size: 0.88rem;
+    opacity: 0.95;
+    line-height: 1.55;
+    margin: 0;
+    color: rgba(248, 250, 252, 0.95);
+}
+
+.advantages {
+    margin-top: 0.5rem;
+    padding-left: 0;
+    border-left: 3px solid rgba(255, 255, 255, 0.35);
+    padding-left: 1rem;
+}
+
+.adTitle {
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin: 0.75rem 0 0.15rem 0;
+    color: #fff;
+}
+
+.advantages p:not(.adTitle) {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin: 0 0 0.35rem 0;
+}
+
+.two {
+    flex: 1;
+    flex-direction: column;
+    background: var(--color-surface, #fff);
+    padding: 2rem 1.75rem;
+    text-align: left;
+    gap: 0.5rem;
+}
+
+.two h3 {
+    color: var(--text);
+    font-size: 1.35rem;
+    margin: 0;
+}
+
+.two > p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 0 0.75rem 0;
+}
+
+.two form {
+    display: block;
+}
+
+.two form > div {
+    margin-bottom: 0.75rem;
+}
+
+.two form div div {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 0.25rem;
+}
+
+.two button[type="button"] {
+    width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.75rem 1rem;
+}
+
+.login,
+.or {
+    padding: 0;
+    margin: 0.75rem 0 0;
+    font-size: 0.85rem;
     text-align: center;
-    font-size: small;
-    font-family:Open sans;
-    background-color: white;
-    color: #1f58b4;
+}
+
+.or div {
+    box-shadow: none;
+}
+
+footer {
+    padding: 1rem 1.5rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: transparent;
+}
+
+@media (max-width: 800px) {
+    main > div {
+        flex-direction: column;
+    }
+
+    main div .one {
+        min-height: auto;
+    }
 }

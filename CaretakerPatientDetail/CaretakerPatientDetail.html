@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sol-med — Patient detail</title>
+    <link rel="stylesheet" href="../CommonCss/Common.css">
+    <link rel="stylesheet" href="CaretakerPatientDetail.css">
+</head>
+<body>
+    <header>
+        <h2>Sol-med</h2>
+    </header>
+    <div class="caretaker-banner" role="status">
+        Caretaker view — read-only. No changes can be made from this session.
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <ul>
+                <li><a href="../CaretakerDashboard/CaretakerDashboard.html">← All patients</a></li>
+                <li><span onclick="logout()">Logout</span></li>
+            </ul>
+        </div>
+        <main>
+            <div class="userInfo">
+                <h3 id="patientTitle">Patient</h3>
+                <p id="patientSub"></p>
+            </div>
+            <h3 class="section-title">Medicines (read-only)</h3>
+            <div id="medList" class="readonly-med-list"></div>
+            <h3 class="section-title">7-day adherence</h3>
+            <div id="heatmap" class="heatmap" aria-label="Seven day adherence"></div>
+            <h3 class="section-title">Day breakdown</h3>
+            <p class="hint">Click a day above to view dose rows for that date.</p>
+            <div id="dayTableWrap"></div>
+        </main>
+    </div>
+    <script src="../Common.js"></script>
+    <script src="CaretakerPatientDetail.js"></script>
+</body>
+</html>

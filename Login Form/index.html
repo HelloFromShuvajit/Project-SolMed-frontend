@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Sol-med Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sol-med — Login</title>
+        <link rel="stylesheet" href="../CommonCss/Common.css">
         <link rel="stylesheet" href="login.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap">
-        <link src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'>
     </head>
     <body>
         <header><h2>Sol-Med</h2></header>
@@ -37,24 +38,23 @@
                             <label class="required" type="password">Password</label>
                         </div>
                         <div>
-                            <input type="text" id="password" placeholder="&#x1F512; Enter the password">
+                            <input type="password" id="password" placeholder="&#x1F512; Enter the password">
                         </div>
                         <div>
                             <button onclick="login()" type="button">Login to my account</button>
                         </div>
                     </form>
-                    <div class="or">
+                    <!-- <div class="or">
                         <div>
                             <p>OR <br>  Continue with</p>
                         </div>
-                    </div>
-                    <div class="google">
-                        <button class="googlebutton" href="#">Sign in with Google</button>
-                    </div>
+                    </div> -->
                     <div class="signup">
                         <p>New to Sol-Med? <br>
-                            <a href="D:\Project Sol Med\SignUp\signUp.html">Create an account</a>
+                            <a href="../SignUp/signUp.html">Create an account</a>
                         </p>
+                        <p style="margin-top:0.75rem;font-size:0.95rem;">Caretaker? <a href="../Auth/caretaker-login.html">Sign in as caretaker</a>
+                            · <a href="../index.html">Auth hub</a></p>
                     </div>
                 </div>
             </div>
@@ -64,6 +64,7 @@
             Dedicated to Secure Medical record keeping.</p>
             <h5>&copy; 2026</h5>
         </footer>
+    <script src="../Common.js"></script>
+    <script src="login.js"></script>
     </body>
-<script src="login.js"></script>
 </html>

@@ -1,3 +1,13 @@
+window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const preEmail = params.get('email');
+    if (preEmail) {
+        const em = document.getElementById('email');
+        if (em) em.value = preEmail;
+        if (em) em.readOnly = true;
+    }
+});
+
 async function signup() {
     const email = document.getElementById('email').value;
     const name = document.getElementById('name').value;
@@ -8,7 +18,7 @@ async function signup() {
 
     try {
         console.log('Trying to call signup API');
-        const response = await fetch(`http://localhost:8080/user/signup`, {
+        const response = await fetch(`${API_BASE}/api/auth/signup`, {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
@@ -20,13 +30,14 @@ async function signup() {
                 gender:gender,
                 password:password,
                 phone:phoneNo,
-                position: 'User'
+                position: 'User',
+                role: 'OWNER',
             })
         });
-        console.log('Response status:', response.status); 
-        console.log('Response ok:', response.ok); 
-        
-        
+        console.log('Response status:', response.status);
+        console.log('Response ok:', response.ok);
+
+
         if (!response.ok) {
             const errorText = await response.text();
             console.error('Signup failed:', errorText);
@@ -34,10 +45,16 @@ async function signup() {
             throw new Error(`API Error: ${response.status} - ${errorText}`);
         }
         const data = await response.json();
+        console.log(response);
+        console.log(data);
         localStorage.setItem('User',JSON.stringify(data));
-        window.location.href='../UserDashboard/UserDashboard.html';
-    console.log(data);
+        const decoded = typeof getUserFromToken === 'function' ? getUserFromToken() : null;
+        if (decoded && decoded.role === 'CARETAKER') {
+            window.location.href = '../CaretakerDashboard/CaretakerDashboard.html';
+        } else {
+            window.location.href = '../UserDashboard/UserDashboard.html';
+        }
     } catch (error) {
-        console.error('User already exists...', error);
+        console.error('Error exists...', error);
     }
 }

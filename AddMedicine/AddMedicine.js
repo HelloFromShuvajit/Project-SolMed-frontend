@@ -1,27 +1,32 @@
 if (!localStorage.getItem('User')) {
-    window.location.href = '../Login Form/Login.html';
+    window.location.href = '../Login Form/index.html';
 }
 
-window.onload = function () {
-    const userString = localStorage.getItem('User');
-    if (!userString) {
-        window.location.href = '../Login Form/Login.html';
+window.onload = async function () {
+    const user = getUserFromToken();
+    console.log(user.id, user.email, user.name);
+
+    if (!user) {
+        window.location.href = '../Login Form/index.html';
+        console.log('user not ok');
         return;
     }
-    const user = JSON.parse(userString);
+    if (user.role === 'CARETAKER') {
+        window.location.href = '../CaretakerDashboard/CaretakerDashboard.html';
+        return;
+    }
     document.getElementById('userName').textContent = user.name;
     document.getElementById('id').textContent = 'SM-UID:' + user.id;
-}
+};
 
-function logout() {
-    localStorage.removeItem('User');
-    window.location.href = '../Login Form/Login.html';
-}
-
+/**
+ * POST JSON with JWT. Every route except /api/auth/** is protected; the filter
+ * reads Authorization: Bearer ... and sets the logged-in user.
+ */
 async function postData(url, data) {
     const response = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authJsonHeaders(),
         body: JSON.stringify(data)
     });
     if (!response.ok) {
@@ -32,27 +37,44 @@ async function postData(url, data) {
 }
 
 async function addMedicine() {
-    const medName = document.getElementById("medName").value;
-    const medStock = document.getElementById("medStock").value;
-    const medTiming = document.getElementById("medTime").value;
-    const userId = JSON.parse(localStorage.getItem('User')).id;
+    const user = getUserFromToken();
+    if (!user || user.id == null) {
+        window.location.href = '../Login Form/index.html';
+        return;
+    }
+
+    const medName = document.getElementById('medName').value.trim();
+    const medStockRaw = document.getElementById('medStock').value;
+    const medTiming = document.getElementById('medTime').value;
+    const userId = user.id;
+
+    if (!medName || !medTiming || medStockRaw === '') {
+        alert('Please fill medicine name, stock, and time.');
+        return;
+    }
+
+    const medStock = parseInt(medStockRaw, 10);
+    if (Number.isNaN(medStock) || medStock < 0) {
+        alert('Please enter a valid stock number.');
+        return;
+    }
 
     try {
-        const medicine = await postData(`http://localhost:8080/medicine/addByUser`, { medName });
-        const userMedicine = await postData(`http://localhost:8080/userMedicine/add`, {
+        console.log('Calling API for medicine.');
+        const medicine = await postData(`${API_BASE}/medicine/addByUser`, { medName });
+        const userMedicine = await postData(`${API_BASE}/userMedicine/add`, {
             userId: userId,
             medicineId: medicine.medId,
             inputTime: medTiming
         });
-        await postData(`http://localhost:8080/medicineLog/add`, {
+        await postData(`${API_BASE}/medicineLog/add`, {
             userMedId: userMedicine.id,
-            medStock
+            medStock: medStock
         });
 
         alert(`${medName} has been added to your Medicine List`);
-        window.location.href = '../UserDashboard/UserDashboard.html'; // update path as needed
     } catch (error) {
         alert('Error: ' + error.message);
-        console.error("Error in adding medicine:", error);
+        console.error('Error in adding medicine:', error);
     }
 }

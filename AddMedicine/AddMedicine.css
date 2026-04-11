@@ -1,33 +1,45 @@
-.newMed{
+/* Add medicine */
+
+.newMed {
     display: flex;
     flex-direction: column;
-    background-color: white;
-    max-height: 700px;
-    max-width: fit-content;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-.newMed form{
-    display: block;
+    background: var(--color-surface);
+    max-width: 480px;
+    width: 100%;
     text-align: left;
-}
-form div{
-    text-align: left;
-    box-shadow: none;
-    margin-bottom: 5px;
-    box-shadow: none;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    padding: 1.75rem 1.75rem 2rem;
 }
 
-input{
-    background-color: #dfe9f8;
-    border-radius: 5px;
-    padding: 10px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border: 2px solid #9fbbe7;
+.newMed h3 {
+    margin: 0 0 1.25rem 0;
+    font-size: 1.2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
 }
-input:hover{
-    background-color:aliceblue;
+
+.newMed form {
+    display: block;
+    width: 100%;
+}
+
+.newMed form > div {
+    margin-bottom: 1rem;
+}
+
+.newMed form label {
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.newMed input {
+    max-width: 100%;
+}
+
+.newMed button[type="button"] {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
 }
