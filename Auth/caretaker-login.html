@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caretaker login — Sol-Med</title>
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <div class="card">
+    <h1>Caretaker login <span class="badge">CARETAKER</span></h1>
+    <p class="sub">View linked patients’ adherence and missed doses in your dashboard (in-app only; no emails).</p>
+    <div id="msg" class="msg"></div>
+    <form id="form">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="username" required />
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required />
+      <button type="submit">Sign in</button>
+    </form>
+    <div class="links">
+      <a href="caretaker-signup.html">Create caretaker account</a> ·
+      <a href="../Login Form/index.html">Patient login</a><br />
+      <a href="../index.html">Project home</a>
+    </div>
+  </div>
+  <script src="../Common.js"></script>
+  <script src="caretaker-login.js"></script>
+</body>
+</html>

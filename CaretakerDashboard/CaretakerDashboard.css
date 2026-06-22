@@ -1,0 +1,182 @@
+.caretaker-banner {
+    background: linear-gradient(90deg, #1e3a5f 0%, #2563eb 100%);
+    color: #f8fafc;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.88rem;
+    text-align: center;
+}
+
+.sidebar-active {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.section-title {
+    margin: 0 0 1rem 0;
+}
+
+.patient-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.patient-card {
+    background: var(--color-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.patient-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+}
+
+.patient-card h4 {
+    margin: 0 0 0.35rem 0;
+    font-size: 1.05rem;
+}
+
+.patient-card p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.patient-card .stats {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.patient-card .stat-ok {
+    color: var(--color-success);
+    font-weight: 600;
+}
+
+.patient-card .stat-bad {
+    color: #b91c1c;
+    font-weight: 600;
+}
+
+.patient-card .missed-meds {
+    margin-top: 0.75rem;
+    padding-top: 0.65rem;
+    border-top: 1px dashed var(--border);
+}
+
+.patient-card .missed-title {
+    margin: 0 0 0.3rem 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+}
+
+.patient-card .missed-meds ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.patient-card .missed-meds li {
+    margin: 0.15rem 0;
+    font-size: 0.88rem;
+}
+
+.patient-card .missed-empty {
+    margin: 0;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.link-patient-panel {
+    margin-bottom: 2rem;
+    padding: 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.link-patient-panel .help-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+}
+
+.link-patient-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.link-patient-row input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.btn-primary {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.inline-msg {
+    margin: 0.75rem 0 0 0;
+    font-size: 0.88rem;
+    min-height: 1.25rem;
+}
+
+.inline-msg.ok {
+    color: var(--color-success);
+}
+
+.inline-msg.err {
+    color: #b91c1c;
+}
+
+.pending-requests {
+    margin-bottom: 2rem;
+    font-size: 0.92rem;
+}
+
+.pending-requests .pending-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.pending-requests .status-pending {
+    color: #b45309;
+    font-weight: 600;
+}
+
+.pending-requests .status-accepted {
+    color: var(--color-success);
+}
+
+.pending-requests .status-rejected {
+    color: #64748b;
+}

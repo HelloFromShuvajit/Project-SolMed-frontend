@@ -1,50 +1,44 @@
 if (!localStorage.getItem('User')) {
-window.location.href = '../Login Form/Login.html';
+    window.location.href = '../../Login Form/index.html';
 }
-window.onload = async function () {
-    const userString = localStorage.getItem('User');
-    console.log(userString);
 
-    if(!userString){
-        window.location.href = '../Login Form/login.html';
-        console.log("userString not ok");
+window.onload = async function () {
+    const user = getUserFromToken();
+    if (!user) {
+        window.location.href = '../../Login Form/index.html';
         return;
     }
-    const user = JSON.parse(userString);
+    if (user.position !== 'Admin') {
+        window.location.href = '../../UserDashboard/UserDashboard.html';
+        return;
+    }
     document.getElementById('userName').textContent = user.name;
 
-    const admin = user.position;
-    console.log(admin);
     allusers();
-}
+};
 
-function logout(){
-    localStorage.removeItem('User');
-    window.location.href = '../../Login Form/Login.html';
-}
 async function allusers() {
-    console.log("Calling API to show all users...");
     try {
-        const response = await fetch(`http://localhost:8080/user/list` , {
-            method: 'GET',
-            headers: {
-                'Content-Type' : 'application/json',
-            }
+        const response = await authFetch(`${API_BASE}/user/list`, {
+            method: 'GET'
         });
-        if(!response.ok){
-            console.log("Failed to fetch all users.");
+        if (response.status === 401) {
+            window.location.href = '../../Login Form/index.html';
+            return;
         }
-        const users= await response.json();
-        console.log(users);
+        if (!response.ok) {
+            console.log('Failed to fetch all users.');
+            return;
+        }
+        const users = await response.json();
         displayUserList(users);
     } catch (error) {
-        console.error("Error happened while fetching users.", error);
-
+        console.error('Error happened while fetching users.', error);
     }
-
 }
+
 async function displayUserList(users) {
-    const userList = document.getElementById("userList");
+    const userList = document.getElementById('userList');
     userList.innerHTML = `
 <div class="user-card">
     <table>
@@ -71,5 +65,5 @@ async function displayUserList(users) {
             `).join('')}
         </tbody>
         </table>
-        </div>`
+        </div>`;
 }

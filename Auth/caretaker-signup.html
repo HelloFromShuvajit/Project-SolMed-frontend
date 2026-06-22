@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create caretaker account — Sol-Med</title>
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <div class="card">
+    <h1>Create caretaker account</h1>
+    <p class="sub">Enter the patient’s registered email. They must approve your link in their app. No emails are sent by Sol-Med.</p>
+    <div id="msg" class="msg"></div>
+    <form id="form">
+      <label for="patientEmail">Patient email</label>
+      <input id="patientEmail" name="patientEmail" type="email" required />
+      <label for="name">Your full name</label>
+      <input id="name" name="name" required />
+      <label for="email">Your email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required />
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="new-password" required minlength="4" />
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" required />
+      <label for="age">Age</label>
+      <input id="age" name="age" type="number" min="1" max="130" required />
+      <label for="gender">Gender</label>
+      <input id="gender" name="gender" required />
+      <label for="position">Position (optional)</label>
+      <input id="position" name="position" placeholder="Caretaker" />
+      <button type="submit">Create caretaker account</button>
+    </form>
+    <div class="links">
+      <a href="caretaker-login.html">Already have an account? Sign in</a><br />
+      <a href="../Login Form/index.html">Patient login</a> · <a href="index.html">Auth home</a>
+    </div>
+  </div>
+  <script src="../Common.js"></script>
+  <script src="caretaker-signup.js"></script>
+</body>
+</html>

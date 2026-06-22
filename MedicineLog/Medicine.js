@@ -1,109 +1,135 @@
 if (!localStorage.getItem('User')) {
-    window.location.href = '../Login Form/Login.html';
+    window.location.href = '../Login Form/index.html';
 }
 
 window.onload = async function () {
-    const userString = localStorage.getItem('User');
-    if (!userString) {
-        window.location.href = '../Login Form/Login.html';
+    const logOutBtn = document.getElementById('logOut-btn');
+    if (logOutBtn) logOutBtn.addEventListener('click', logout);
+
+    const user = getUserFromToken();
+
+    if (!user) {
+        window.location.href = '../Login Form/index.html';
         return;
     }
-    const user = JSON.parse(userString);
+    if (user.role === 'CARETAKER') {
+        window.location.href = '../CaretakerDashboard/CaretakerDashboard.html';
+        return;
+    }
     document.getElementById('userName').textContent = user.name;
     document.getElementById('id').textContent = 'SM-UID:' + user.id;
 
     const userId = user.id;
-    console.log(userId);
     try {
-        console.log("Calling API to get UserMedicines for: ", userId);
-        const response = await fetch(`http://localhost:8080/userMedicine/user/${userId}`,{
-            method : 'GET',
-            headers : {
-                'Content-Type' : 'application/json',
-            }
+        const response = await authFetch(`${API_BASE}/userMedicine/user/${userId}`, {
+            method: 'GET'
         });
+        if (response.status === 401) {
+            window.location.href = '../Login Form/index.html';
+            return;
+        }
         if (!response.ok) {
-            console.log("Failed to fetch medicines.");
+            console.log('Failed to fetch medicines.');
+            return;
         }
         const usermedicines = await response.json();
-        console.log("UserMedicines:", usermedicines);
-        displayMedicines(usermedicines);
+        displayMedicines(usermedicines, user);
     } catch (error) {
-        console.error("Error happened while fetching medicines.", error);
+        console.error('Error happened while fetching medicines.', error);
     }
-}
-function logout(){
-    localStorage.removeItem('User');
-    window.location.href = '../Login Form/Login.html';
-}
-async function displayMedicines(usermedicines){
-    const medList= document.getElementById("medList");
+};
+
+async function displayMedicines(usermedicines, currentUser) {
+    const medList = document.getElementById('medList');
+    const role = currentUser && currentUser.role ? currentUser.role : (getUserFromToken() || {}).role;
 
     const results = await Promise.all(
         usermedicines.map(async (usermedicine) => {
-            console.log("Usermedicine Id:",usermedicine.id)
-            const response = await fetch(`http://localhost:8080/medicineLog/userMedicine/${usermedicine.id}`);
-            const medicineLog = await response.json();
-            console.log("MedicineLog:",medicineLog);
-            const stock = medicineLog[0]?.medStock ?? 'N/A';//The ?. and ?? operators prevent crashes if any value is null or undefined, so the page will still render even if some data is missing.
+            const [logRes, takenRes] = await Promise.all([
+                authFetch(`${API_BASE}/medicineLog/userMedicine/${usermedicine.id}`, { method: 'GET' }),
+                authFetch(`${API_BASE}/medicineLog/userMedicine/${usermedicine.id}/taken-today`, {
+                    method: 'GET',
+                }),
+            ]);
+            if (!logRes.ok) {
+                return `<div class="medicine-card"><p>Could not load log</p></div>`;
+            }
+            const medicineLog = await logRes.json();
+            const stock = medicineLog[0]?.medStock ?? 'N/A';
+            const medLogRow = medicineLog[0];
+
+            let takenToday = false;
+            if (takenRes.ok) {
+                try {
+                    const t = await takenRes.json();
+                    takenToday = !!t.takenToday;
+                } catch (_) {
+                    /* ignore */
+                }
+            }
+
+            let actions = '';
+            if (role !== 'CARETAKER' && medLogRow) {
+                const markBtn = takenToday
+                    ? '<button type="button" class="medTaken-btn" disabled aria-disabled="true">Taken today</button>'
+                    : `<button onclick="medTaken(${medLogRow.MedLogId})" type="button" class="medTaken-btn">Mark Taken</button>`;
+                actions = `<div class="updateMedStock">
+                ${markBtn}
+                <button onclick="refill(${medLogRow.MedLogId})" type="button" class="refill-btn">Refill Stock</button>
+                </div>`;
+            }
 
             return `<div class="medicine-card">
                 <h3>Medicine Name: </h3> <p>${usermedicine.medicine.medName}</p>
                 <h3>Scheduled Time: </h3> <p>${usermedicine.medTiming}</p>
                 <h3>Remaining Medicines: </h3> <p>${stock}</p>
-                <div class="updateMedStock">
-                <button onclick="medTaken(${medicineLog[0].MedLogId})" type="button" class="medTaken-btn">Mark Taken</button>
-                <button onclick="refill(${medicineLog[0].MedLogId})" type="button" class="refill-btn">Refill Stock</button>
-                </div>
+                ${actions}
             </div>`;
         })
     );
-            medList.innerHTML = results.join('');
+    medList.innerHTML = results.join('');
 }
+
 async function medTaken(medLogId) {
     try {
-        console.log("Calling API to medicine taken: ");
-        const response = await fetch(`http://localhost:8080/medicineLog/medTaken/${medLogId}`,{
-            method : 'PATCH',
-            headers : {
-                'Content-Type' : 'application/json',
-            }
+        const response = await authFetch(`${API_BASE}/medicineLog/medTaken/${medLogId}`, {
+            method: 'PATCH'
         });
+        if (response.status === 401) {
+            window.location.href = '../Login Form/index.html';
+            return;
+        }
         if (!response.ok) {
-            console.log("Failed to mark medicine as taken.");
-            throw new Error("Failed to mark as taken");
-            
+            throw new Error('Failed to mark as taken');
         }
         const markMedicine = await response.json();
-        console.log("Marked? :", markMedicine);
         alert(markMedicine.message);
-        window.location.reload();
+                window.location.reload();
     } catch (error) {
-        console.error("Error happened while marking medicine: ", error);
+        console.error('Error happened while marking medicine: ', error);
     }
 }
+
 async function refill(medLogId) {
-    const newStock= prompt("Enter how many medicine you want to add.");
+    const newStock = prompt('Enter how many medicine you want to add.');
+    if (newStock === null) return;
     try {
-        console.log("Calling API to medicine refill: ");
-        const response = await fetch(`http://localhost:8080/medicineLog/refill/${medLogId}`,{
-            method : 'PATCH',
-            headers : {
-                'Content-Type' : 'application/json',
-            },
-            body:newStock
+        const response = await authFetch(`${API_BASE}/medicineLog/refill/${medLogId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(parseInt(newStock, 10))
         });
+        if (response.status === 401) {
+            window.location.href = '../Login Form/index.html';
+            return;
+        }
         if (!response.ok) {
-            console.log("Failed to refill medicine.");
-            throw new Error("Failed to refill the medicine");
-            
+            throw new Error('Failed to refill the medicine');
         }
         const refillMedicine = await response.json();
-        console.log("Refilled? :", refillMedicine);
         alert(refillMedicine.message);
         window.location.reload();
-
     } catch (error) {
-        console.error("Error happened while refilling medicine: ", error);
+        console.error('Error happened while refilling medicine: ', error);
     }
 }
