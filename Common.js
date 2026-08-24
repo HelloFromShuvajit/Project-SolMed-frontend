@@ -1,5 +1,20 @@
-/** Base URL for the Spring Boot API (must match server.port in application.properties). */
-const API_BASE = 'http://localhost:8081';
+/**
+ * Spring Boot API base URL.
+ * Prefer window.SOLMED_API_BASE from config/api.js (set via SOLMED_API_URL at build time).
+ * Fallbacks: localhost → http://localhost:8081, otherwise Railway production.
+ */
+function resolveApiBase() {
+    if (typeof window !== 'undefined' && window.SOLMED_API_BASE) {
+        return String(window.SOLMED_API_BASE).replace(/\/$/, '');
+    }
+    const host = typeof window !== 'undefined' ? window.location.hostname : '';
+    if (host === 'localhost' || host === '127.0.0.1') {
+        return 'http://localhost:8081';
+    }
+    return 'https://solmedbackend-production.up.railway.app';
+}
+
+const API_BASE = resolveApiBase();
 
 /** Works from top-level folders (UserDashboard, …) and from Admin/* subfolders. */
 function loginPageUrl() {
